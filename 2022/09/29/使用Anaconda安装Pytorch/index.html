@@ -12,25 +12,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  <meta name="theme-color" content="#2f4154">
+  <meta name="theme-color" content="#796b87">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="情况:已安装Anaconda. 1 Pytorch的安装首先为加快下载速度将Anaconda源换为清华源： 123456conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;cloud&#x2F;msys2&#x2F;conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsing">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/09/29/hello-world/index.html">
+<meta property="og:title" content="Linux&#x2F;Windows下使用Anaconda安装Pytorch">
+<meta property="og:url" content="http://example.com/2022/09/29/%E4%BD%BF%E7%94%A8Anaconda%E5%AE%89%E8%A3%85Pytorch/index.html">
 <meta property="og:site_name" content="APTX0724">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="情况:已安装Anaconda. 1 Pytorch的安装首先为加快下载速度将Anaconda源换为清华源： 123456conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;cloud&#x2F;msys2&#x2F;conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsing">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-09-29T10:15:28.439Z">
-<meta property="article:modified_time" content="2022-09-29T10:15:28.440Z">
+<meta property="og:image" content="http://example.com/2022/09/29/%E4%BD%BF%E7%94%A8Anaconda%E5%AE%89%E8%A3%85Pytorch/CUDA%E7%89%88%E6%9C%AC.png">
+<meta property="og:image" content="http://example.com/2022/09/29/%E4%BD%BF%E7%94%A8Anaconda%E5%AE%89%E8%A3%85Pytorch/Pytorch%E7%89%88%E6%9C%AC.png">
+<meta property="article:published_time" content="2022-09-29T10:29:55.000Z">
+<meta property="article:modified_time" content="2022-09-29T16:10:17.205Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/09/29/%E4%BD%BF%E7%94%A8Anaconda%E5%AE%89%E8%A3%85Pytorch/CUDA%E7%89%88%E6%9C%AC.png">
   
   
   
-  <title>Hello World - APTX0724</title>
+  <title>Linux/Windows下使用Anaconda安装Pytorch - APTX0724</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -94,7 +97,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>小扣的个人Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -189,13 +192,13 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="Linux/Windows下使用Anaconda安装Pytorch"></span>
           
         </div>
 
@@ -206,7 +209,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-29 18:15" pubdate>
+        <time datetime="2022-09-29 18:29" pubdate>
           2022年9月29日 晚上
         </time>
       </span>
@@ -218,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 字
+          1.2k 字
         
       </span>
     
@@ -229,7 +232,7 @@
         
         
         
-          4 分钟
+          10 分钟
         
       </span>
     
@@ -267,24 +270,46 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">Linux/Windows下使用Anaconda安装Pytorch</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <p>情况:已安装Anaconda.</p>
+<h2 id="1-Pytorch的安装"><a href="#1-Pytorch的安装" class="headerlink" title="1 Pytorch的安装"></a>1 Pytorch的安装</h2><p>首先为加快下载速度将Anaconda源换为清华源：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/<br>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge<br>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/<br>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch/<br>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/<br>conda config --<span class="hljs-built_in">set</span> show_channel_urls <span class="hljs-built_in">yes</span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>可以使用以下命令查看Anaconda源的地址：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda config --show-sources<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>由于不同的程序可能需要不同的环境，故首先创建一个新的虚拟环境(pytorch是这个环境的名字，可以自由设置)：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda create -n pytorch python=3.9<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>切换到虚拟环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda activate pytorch<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>查看CUDA版本:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">nvcc --version<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2022/09/29/%E4%BD%BF%E7%94%A8Anaconda%E5%AE%89%E8%A3%85Pytorch/CUDA%E7%89%88%E6%9C%AC.png" srcset="/img/loading.gif" lazyload alt="CUDA版本"></p>
+<p>显示CUDA版本为11.2，到<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/previous-versions/">Pytorch官网</a>[CTRL+F]找一下对应的命令，似乎没有11.2版本，为保证兼容性，故用版本稍低的11.1：</p>
+<p><img src="/2022/09/29/%E4%BD%BF%E7%94%A8Anaconda%E5%AE%89%E8%A3%85Pytorch/Pytorch%E7%89%88%E6%9C%AC.png" srcset="/img/loading.gif" lazyload alt="Pytorch版本"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge<br></code></pre></td></tr></table></figure>
+
+<p>主要是pytorch和cudatoolkit这两个包下载过程有些慢，稍等一会儿就安装完成啦~ (●’◡’●)</p>
+<h2 id="2-其他库的安装（根据需要"><a href="#2-其他库的安装（根据需要" class="headerlink" title="2 其他库的安装（根据需要"></a>2 其他库的安装（根据需要</h2><p>机器学习基础库：scikit-learn、pandas、seaborn</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install scikit-learn<br>conda install pandas<br>conda  install seaborn<br></code></pre></td></tr></table></figure>
+
+<p>进度条库tqdm:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install -c conda-forge tqdm<br></code></pre></td></tr></table></figure>
+
+<p>tensorboardX：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda install -c conda-forge tensorboardx <br></code></pre></td></tr></table></figure>
+
+<p>查看安装库的情况：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">conda list<br></code></pre></td></tr></table></figure>
+
+<h2 id="3-使用Pycharm远程连接服务器"><a href="#3-使用Pycharm远程连接服务器" class="headerlink" title="3 使用Pycharm远程连接服务器"></a>3 使用Pycharm远程连接服务器</h2><p>看这篇：<a target="_blank" rel="noopener" href="http://t.csdn.cn/9Pu6J">http://t.csdn.cn/9Pu6J</a></p>
 
                 
               </div>
@@ -302,8 +327,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2022/09/29/hello-world/</div>
+      <div>Linux/Windows下使用Anaconda安装Pytorch</div>
+      <div>http://example.com/2022/09/29/使用Anaconda安装Pytorch/</div>
     </div>
     <div class="license-meta">
       
@@ -346,12 +371,6 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
-                    
-                      <a href="/2022/09/29/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" title="我的第一篇博客~">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">我的第一篇博客~</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
                     
                   </article>
                   <article class="post-next col-6">
