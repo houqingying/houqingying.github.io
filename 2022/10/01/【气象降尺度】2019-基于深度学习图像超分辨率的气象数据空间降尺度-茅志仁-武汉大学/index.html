@@ -16,15 +16,15 @@
   <meta name="author" content="Qingying Hou">
   <meta name="keywords" content="">
   
-    <meta name="description" content="摘要地球系统模型(Earth System Model)是基于物理现象、运行在大型计算机上的数值模拟模型，输出的数据主要包括气温、降水、凤、气压、温度等。">
+    <meta name="description" content="0 摘要降水数据反映到图像领域即为降水分布图；图像领域与数值降尺度类似的一个分支为图像超分辨率(SR). DeepSD：收敛慢(不同类别气象数据训练时间成本高)、网络结构浅、插值预处理引入人为误差&amp;增加计算复杂度. 本文：提出VDSD(20层+) &amp; ResSD(60层+) &amp; ResSD+(100层+)；利用了残差学习，网络收敛有提升；去除插值预处理，通过反卷积上采样实现">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【气象降尺度】2019-基于深度学习图像超分辨率的气象数据空间降尺度-茅志仁-武汉大学">
 <meta property="og:url" content="http://example.com/2022/10/01/%E3%80%90%E6%B0%94%E8%B1%A1%E9%99%8D%E5%B0%BA%E5%BA%A6%E3%80%912019-%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9B%BE%E5%83%8F%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E7%9A%84%E6%B0%94%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%A9%BA%E9%97%B4%E9%99%8D%E5%B0%BA%E5%BA%A6-%E8%8C%85%E5%BF%97%E4%BB%81-%E6%AD%A6%E6%B1%89%E5%A4%A7%E5%AD%A6/index.html">
 <meta property="og:site_name" content="APTX0724">
-<meta property="og:description" content="摘要地球系统模型(Earth System Model)是基于物理现象、运行在大型计算机上的数值模拟模型，输出的数据主要包括气温、降水、凤、气压、温度等。">
+<meta property="og:description" content="0 摘要降水数据反映到图像领域即为降水分布图；图像领域与数值降尺度类似的一个分支为图像超分辨率(SR). DeepSD：收敛慢(不同类别气象数据训练时间成本高)、网络结构浅、插值预处理引入人为误差&amp;增加计算复杂度. 本文：提出VDSD(20层+) &amp; ResSD(60层+) &amp; ResSD+(100层+)；利用了残差学习，网络收敛有提升；去除插值预处理，通过反卷积上采样实现">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-01T07:19:16.000Z">
-<meta property="article:modified_time" content="2022-10-01T07:57:40.980Z">
+<meta property="article:modified_time" content="2022-10-01T12:09:47.948Z">
 <meta property="article:author" content="Qingying Hou">
 <meta property="article:tag" content="论文">
 <meta property="article:tag" content="气象降尺度">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          75 字
+          611 字
         
       </span>
     
@@ -231,7 +231,7 @@
         
         
         
-          1 分钟
+          6 分钟
         
       </span>
     
@@ -274,7 +274,16 @@
             
               <div class="markdown-body">
                 
-                <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>地球系统模型(Earth System Model)是基于物理现象、运行在大型计算机上的数值模拟模型，输出的数据主要包括气温、降水、凤、气压、温度等。</p>
+                <h2 id="0-摘要"><a href="#0-摘要" class="headerlink" title="0 摘要"></a>0 摘要</h2><p>降水数据反映到图像领域即为降水分布图；图像领域与数值降尺度类似的一个分支为图像超分辨率(SR).</p>
+<p>DeepSD：收敛慢(不同类别气象数据训练时间成本高)、网络结构浅、插值预处理引入人为误差&amp;增加计算复杂度.</p>
+<p>本文：提出VDSD(20层+) &amp; ResSD(60层+) &amp; ResSD+(100层+)；利用了残差学习，网络收敛有提升；去除插值预处理，通过<strong>反卷积上采样</strong>实现超分辨率重建，减小计算复杂度；将超分辨率网络模块化。</p>
+<p>通过和气象局公共气象服务中心合作，本文以深度学习SR方法为基础，将其迁移到气象数据空间降尺度的研究上。</p>
+<h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1 引言"></a>1 引言</h2><p><strong>动力降尺度：</strong>区域气候模型，利用全球气候模型提供的初始条件和边界，推测出高分辨率的气候变化。</p>
+<p><strong>统计降尺度：</strong>对大尺度变量（如大气表面压力）和局部变量（如特定地点的风速）之间的观测建立统计关系，并检验这种关系的合理性，然后把这种关系应用于全球气候模型（GCMs）的数据，从全球气候模型（GCMs）的输出获取局部变量。</p>
+<p>古早技术：2007年，“偏差校正空间分解”（BCSD）</p>
+<p>DeepSD：将静态高分辨率的地形数据和低分辨率的气象数据结合起来，以缓解不适定问题。</p>
+<p>介绍了SRCNN \ VDSR \ ESPCN\ LapSRN \ SRGAN \ ESRGAN</p>
+<p>降水模式有NCEP[8]，RJTD，EC，GRAPES_MESO，NMC[11]，空间分辨率分别为25公里、25公里、12.5公里、10公里、5公里。</p>
 
                 
               </div>
