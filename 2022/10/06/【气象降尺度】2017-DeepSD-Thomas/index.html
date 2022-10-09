@@ -16,23 +16,26 @@
   <meta name="author" content="Qingying Hou">
   <meta name="keywords" content="">
   
-    <meta name="description" content="0 摘要 降水数据反映到图像领域即为降水分布图；图像领域与数值降尺度类似的一个分支为图像超分辨率(SR). DeepSD：收敛慢(不同类别气象数据训练时间成本高)、网络结构浅、插值预处理引入人为误差&amp;增加计算复杂度. 本文：提出VDSD(20层+) &amp; ResSD(60层+) &amp; ResSD+(100层+)；利用了残差学习，网络收敛有提升；去除插值预处理，通过反卷积">
+    <meta name="description" content="摘要 地球系统模型ESM(Earth System Models)在空间分辨率上过于粗糙，本文提出了一个通用的堆叠SRCNN网络DeepSD用于气候变量的统计降尺度。 DeepSD对SRCNN进行了补充，使用了多尺度的输入通道(?)。 与偏差校正空间分解等四种统计降尺度方法进行比较，将美国大陆的日降水量从1°(100km)降至1&#x2F;8°(12.5km)。 文章中还讨论了一个使用NASA E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【气象降尺度】2019-基于深度学习图像超分辨率的气象数据空间降尺度-茅志仁-武汉大学">
-<meta property="og:url" content="https://houqingying.github.io/2022/10/01/%E3%80%90%E6%B0%94%E8%B1%A1%E9%99%8D%E5%B0%BA%E5%BA%A6%E3%80%912019-%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9B%BE%E5%83%8F%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E7%9A%84%E6%B0%94%E8%B1%A1%E6%95%B0%E6%8D%AE%E7%A9%BA%E9%97%B4%E9%99%8D%E5%B0%BA%E5%BA%A6-%E8%8C%85%E5%BF%97%E4%BB%81-%E6%AD%A6%E6%B1%89%E5%A4%A7%E5%AD%A6/index.html">
+<meta property="og:title" content="【气象降尺度】2017-DeepSD:通过SR生成高分辨率气候变化预测-Thomas-KDD">
+<meta property="og:url" content="https://houqingying.github.io/2022/10/06/%E3%80%90%E6%B0%94%E8%B1%A1%E9%99%8D%E5%B0%BA%E5%BA%A6%E3%80%912017-DeepSD-Thomas/index.html">
 <meta property="og:site_name" content="APTX0724">
-<meta property="og:description" content="0 摘要 降水数据反映到图像领域即为降水分布图；图像领域与数值降尺度类似的一个分支为图像超分辨率(SR). DeepSD：收敛慢(不同类别气象数据训练时间成本高)、网络结构浅、插值预处理引入人为误差&amp;增加计算复杂度. 本文：提出VDSD(20层+) &amp; ResSD(60层+) &amp; ResSD+(100层+)；利用了残差学习，网络收敛有提升；去除插值预处理，通过反卷积">
+<meta property="og:description" content="摘要 地球系统模型ESM(Earth System Models)在空间分辨率上过于粗糙，本文提出了一个通用的堆叠SRCNN网络DeepSD用于气候变量的统计降尺度。 DeepSD对SRCNN进行了补充，使用了多尺度的输入通道(?)。 与偏差校正空间分解等四种统计降尺度方法进行比较，将美国大陆的日降水量从1°(100km)降至1&#x2F;8°(12.5km)。 文章中还讨论了一个使用NASA E">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-01T07:19:16.000Z">
-<meta property="article:modified_time" content="2022-10-01T12:09:47.948Z">
+<meta property="og:image" content="https://houqingying.github.io/2022/10/06/%E3%80%90%E6%B0%94%E8%B1%A1%E9%99%8D%E5%B0%BA%E5%BA%A6%E3%80%912017-DeepSD-Thomas/image-20221006200859852.png">
+<meta property="og:image" content="https://houqingying.github.io/2022/10/06/%E3%80%90%E6%B0%94%E8%B1%A1%E9%99%8D%E5%B0%BA%E5%BA%A6%E3%80%912017-DeepSD-Thomas/image-20221006193939410.png">
+<meta property="article:published_time" content="2022-10-06T07:59:29.000Z">
+<meta property="article:modified_time" content="2022-10-06T12:10:21.363Z">
 <meta property="article:author" content="Qingying Hou">
 <meta property="article:tag" content="论文">
 <meta property="article:tag" content="气象降尺度">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://houqingying.github.io/2022/10/06/%E3%80%90%E6%B0%94%E8%B1%A1%E9%99%8D%E5%B0%BA%E5%BA%A6%E3%80%912017-DeepSD-Thomas/image-20221006200859852.png">
   
   
   
-  <title>【气象降尺度】2019-基于深度学习图像超分辨率的气象数据空间降尺度-茅志仁-武汉大学 - APTX0724</title>
+  <title>【气象降尺度】2017-DeepSD:通过SR生成高分辨率气候变化预测-Thomas-KDD - APTX0724</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="【气象降尺度】2019-基于深度学习图像超分辨率的气象数据空间降尺度-茅志仁-武汉大学"></span>
+            <span id="subtitle" data-typed-text="【气象降尺度】2017-DeepSD:通过SR生成高分辨率气候变化预测-Thomas-KDD"></span>
           
         </div>
 
@@ -208,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-01 15:19" pubdate>
-          2022年10月1日 下午
+        <time datetime="2022-10-06 15:59" pubdate>
+          2022年10月6日 下午
         </time>
       </span>
     
@@ -220,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          606 字
+          2.6k 字
         
       </span>
     
@@ -231,7 +234,7 @@
         
         
         
-          6 分钟
+          22 分钟
         
       </span>
     
@@ -269,24 +272,116 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">【气象降尺度】2019-基于深度学习图像超分辨率的气象数据空间降尺度-茅志仁-武汉大学</h1>
+            <h1 style="display: none">【气象降尺度】2017-DeepSD:通过SR生成高分辨率气候变化预测-Thomas-KDD</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="摘要">0 摘要</h2>
-<p>降水数据反映到图像领域即为降水分布图；图像领域与数值降尺度类似的一个分支为图像超分辨率(SR).</p>
-<p>DeepSD：收敛慢(不同类别气象数据训练时间成本高)、网络结构浅、插值预处理引入人为误差&amp;增加计算复杂度.</p>
-<p>本文：提出VDSD(20层+) &amp; ResSD(60层+) &amp;
-ResSD+(100层+)；利用了残差学习，网络收敛有提升；去除插值预处理，通过<strong>反卷积上采样</strong>实现超分辨率重建，减小计算复杂度；将超分辨率网络模块化。</p>
-<p>通过和气象局公共气象服务中心合作，本文以深度学习SR方法为基础，将其迁移到气象数据空间降尺度的研究上。</p>
+                <h2 id="摘要">摘要</h2>
+<p>地球系统模型ESM(Earth System
+Models)在空间分辨率上过于粗糙，本文提出了一个通用的堆叠SRCNN网络DeepSD用于气候变量的统计降尺度。</p>
+<p>DeepSD对SRCNN进行了补充，使用了多尺度的输入通道(?)。</p>
+<p>与偏差校正空间分解等四种统计降尺度方法进行比较，将美国大陆的日降水量从1°(100km)降至1/8°(12.5km)。</p>
+<p>文章中还讨论了一个使用NASA Earth
+Exchange(NEX)的框架，对具有多种排放场景的20多个ESM进行降尺度。</p>
 <h2 id="引言">1 引言</h2>
-<p><strong>动力降尺度：</strong>区域气候模型，利用全球气候模型提供的初始条件和边界，推测出高分辨率的气候变化。</p>
-<p><strong>统计降尺度：</strong>对大尺度变量（如大气表面压力）和局部变量（如特定地点的风速）之间的观测建立统计关系，并检验这种关系的合理性，然后把这种关系应用于全球气候模型（GCMs）的数据，从全球气候模型（GCMs）的输出获取局部变量。</p>
-<p>古早技术：2007年，“偏差校正空间分解”（BCSD）</p>
-<p>DeepSD：将静态高分辨率的地形数据和低分辨率的气象数据结合起来，以缓解不适定问题。</p>
-<p>介绍了SRCNN  VDSR  ESPCN LapSRN  SRGAN  ESRGAN</p>
-<p>降水模式有NCEP[8]，RJTD，EC，GRAPES_MESO，NMC[11]，空间分辨率分别为25公里、25公里、12.5公里、10公里、5公里。</p>
+<p>气候对农业、交通、能源、人类安全等都有很大影响。地球系统模型(ESMs)是在大型超级计算机上运行的基于物理的数值模型，用于预测地球对大气温室气体排放情景变化的响应。</p>
+<p>ESM的输出是许多学科用于研究气候变化的主要数据产品，提供了温度、降水、风、湿度、压力等大量气候变量。</p>
+<p>但是ESM在计算上的要求使得其空间分辨率限制在1°到3°以内，这样的分辨率太过粗糙，无法解决关键的物理过程，也无法评估这些气候变量造成的局部本地影响。</p>
+<p>传统降尺度方法：</p>
+<ul>
+<li>动态降尺度(区域气候模型RCM)：划分更小的网格。</li>
+<li>统计降尺度(Statistical
+Downscaling,SD)：通过统计学习/机器学习方法，学习了一种函数形式，通过合并观测数据，把ESM从低分辨率映射到高分辨率。</li>
+</ul>
+<p>目前还不知道有任何SD方法能够明确地捕获低分辨率和高分辨率气候数据中的空间依赖性。且传统方法需要高分辨率的观测数据，这是观测数据很少的贫穷地区难以获取的。而超分辨率问题(SR)和统计降尺度问题(SD)具有很大的相似性。</p>
+<p>最后，结合本文的超分辨率方法、利用NASA的地球交换(NEX)平台，本文提出了一个框架，对美国大陆（CONUS）的四种排放情景，在每日时间尺度上进行低尺度的地球系统模型（ESMs）集成。</p>
+<div class="note note-info">
+            <p>NEX-DCP30数据集由美国本土的downscale气候情景组成，这些情景源自在CMIP5下进行的大气环流模式(GCM)和IPCC第五次评估报告制定的四种温室气体排放情景，称为代表性浓度路径(RCP)。这些数据集的目的是提供一组高分辨率、偏差校正的气候变化预测，可用于评估气候变化对更细尺度气候梯度敏感过程的影响以及局部地形对气候条件的影响。该数据集包含涵盖1950 年至 2005 年（回顾性运行）和 2006 年至 2099年（预期运行）期间的月度预测。</p>
+          </div>
+<p>DeepSD：SOTA、可迁移、提供生成高分辨率的降尺度产品的新思路。</p>
+<h2 id="地球科学数据">2 地球科学数据</h2>
+<p>地球科学数据来自各种领域，比如气候模拟、遥感数据和气象站观测。这类数据的时空性质给计算和存储带来了巨大的挑战(需要的存储量大)，并且分析这些复杂的数据集需要专业的技术和知识。</p>
+<p>最新的ESM是CMIP5的产物，该项目通过大气、陆地和海洋的动力系统耦合效应来模拟气候，但具有分辨率低和缺乏模式一致性的缺点。</p>
+<p>观测数据集包括卫星观测、台站观测，以及混合这两种观测信息的再分析数据。观测数据集使我们能够学习将ESM输出映射到更高分辨率的统计模型。</p>
+<p><strong>本文：</strong>通过<span class="label label-primary">PRISM数据集</span>以每天4km的空间分辨率获得降水，该数据集将站点观测集合到一个包含物理和地形信息的网格中。然后将降水数据upscale到12.5km，作为HR图像；接下来进一步将其提高到100km作为LR图像。目标是学习LR与HR之间的映射关系。</p>
+<p><strong>其他气象因素的影响：</strong>地形对天气和气候变化有很大的影响，利用0.5°和1°不同尺度下有价值的地形信息。并且，通过将静态高分辨率地形数据与其他低分辨率气候变量结合起来，可以缓解ill-posed问题。</p>
+<p>和图片一样，每一个地球科学数据产品都具有强空间依赖性。可以将不同通道对应于气候变量和地形数据。虽然气候数据的dynamic和chaotic使其比图像更加复杂，但这种非常规的数据处理方法使得我们能够哦使用为图像处理开发的各种模型。</p>
+<h2 id="相关工作">4 相关工作</h2>
+<p>空间降尺度的传统方法：回归 &amp; 天气分类模式。</p>
+<p>回归方法：(1)ASD(Automated Statistical
+Downscaling)首先使用分类模型对有降水的天数进行分类，然后进行回归估计降水总量。(2)BCSC(Bias
+Corrected Spatial
+Disaggregation)偏差校正空间分解，首先对ESM进行偏差校正，以匹配高分辨率观测数据集的分布，然后进行插值和空间缩放，以校正局部偏差。</p>
+<p>上面的方法在降尺度极端天气上表现不佳。</p>
+<p>然后简单介绍了传统的SR方法，基于patch和稀疏编码等等，引出CNN。</p>
+<h2 id="方法">5 方法</h2>
+<p>先介绍了SRCNN，然后指出传统SR方法将分辨率提升2~4倍，而现在降尺度要求提升8~12倍，不采取使用一个网络直接提升12倍的方法，而是模仿堆叠去噪自编码器等堆叠网络的思想，把SRCNN堆起来。</p>
+<p>每个SRCNN使用各自的输入/输出分辨率进行独立训练，在测试时进行堆叠。</p>
+<p>级联(cascading)SRCNN比堆叠(stacked)SRCNN效果要差，论文里没有详细介绍区别，我猜区别是是否独立训练？</p>
+<p>在这个过程中，我们可以借助其他高分辨率图像来估计HR图像，比如静态地形特征（海拔、水陆分布等）。</p>
+<p><img src="/2022/10/06/%E3%80%90%E6%B0%94%E8%B1%A1%E9%99%8D%E5%B0%BA%E5%BA%A6%E3%80%912017-DeepSD-Thomas/image-20221006200859852.png" srcset="/img/loading.gif" lazyload style="zoom:50%;"></p>
+<p>如上图所示，第一行为海拔高度图，第二行为降水情况。每经过一个Layer，分辨率提高两倍。相应的HR海拔高度图和LR降水图一同被送入SRCNN的Layer1中。</p>
+<p><img src="/2022/10/06/%E3%80%90%E6%B0%94%E8%B1%A1%E9%99%8D%E5%B0%BA%E5%BA%A6%E3%80%912017-DeepSD-Thomas/image-20221006193939410.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="实验">6 实验</h2>
+<p>降水数据集：PRISM数据集提供的日降水，1980~2005的数据用于训练(9496天)，2006到2014的数据用于测试(3287天)。</p>
+<p>地形数据集：USGS提供的30角秒(约1km)海拔数据集GTOPO30。</p>
+<p>数据预处理：全美大陆最高分辨率(<span class="math inline">\(\frac{1}{8}\)</span>°)的图像大小为208x464，通过双三次插值的采样得到各个分辨率的图像，比如1°的图像大小为26x58。</p>
+<p>降水和海拔作为输入，降水为输出。和SRCNN训练时的参数设置完全相同。</p>
+<table>
+<thead>
+<tr class="header">
+<th>单词</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>coarse</td>
+<td>粗糙的</td>
+</tr>
+<tr class="even">
+<td>archive</td>
+<td>档案</td>
+</tr>
+<tr class="odd">
+<td>archived</td>
+<td>已归档的、存档的</td>
+</tr>
+<tr class="even">
+<td>principal</td>
+<td>最重要的、首要的</td>
+</tr>
+<tr class="odd">
+<td>harness</td>
+<td>治理、控制利用</td>
+</tr>
+<tr class="even">
+<td>topography</td>
+<td>地势</td>
+</tr>
+<tr class="odd">
+<td>inherently</td>
+<td>内在地、固有地</td>
+</tr>
+<tr class="even">
+<td>analogously</td>
+<td>类似的、相似的</td>
+</tr>
+<tr class="odd">
+<td>cascading</td>
+<td>级联的</td>
+</tr>
+<tr class="even">
+<td>underlying</td>
+<td>潜在的、根本的</td>
+</tr>
+<tr class="odd">
+<td>elevation</td>
+<td>海拔高度</td>
+</tr>
+</tbody>
+</table>
 
                 
               </div>
@@ -313,8 +408,8 @@ ResSD+(100层+)；利用了残差学习，网络收敛有提升；去除插值�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>【气象降尺度】2019-基于深度学习图像超分辨率的气象数据空间降尺度-茅志仁-武汉大学</div>
-      <div>https://houqingying.github.io/2022/10/01/【气象降尺度】2019-基于深度学习图像超分辨率的气象数据空间降尺度-茅志仁-武汉大学/</div>
+      <div>【气象降尺度】2017-DeepSD:通过SR生成高分辨率气候变化预测-Thomas-KDD</div>
+      <div>https://houqingying.github.io/2022/10/06/【气象降尺度】2017-DeepSD-Thomas/</div>
     </div>
     <div class="license-meta">
       
@@ -326,7 +421,7 @@ ResSD+(100层+)；利用了残差学习，网络收敛有提升；去除插值�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月1日</div>
+          <div>2022年10月6日</div>
         </div>
       
       
@@ -358,9 +453,9 @@ ResSD+(100层+)；利用了残差学习，网络收敛有提升；去除插值�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/01/%E3%80%90%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E3%80%91SRCNN/" title="【超分辨率】SRCNN-利用深度卷积网络实现图像超分辨率">
+                      <a href="/2022/10/08/%E3%80%90%E6%B0%94%E8%B1%A1%E9%99%8D%E5%B0%BA%E5%BA%A6%E3%80%912021-%E5%9F%BA%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E7%9A%84%E6%B0%94%E8%B1%A1%E9%A2%84%E6%8A%A5%E7%B3%BB%E7%BB%9F%E7%A0%94%E7%A9%B6-%E6%AD%A6%E6%B1%89%E5%A4%A7%E5%AD%A6-%E7%A8%8B%E5%BB%BA%E6%96%B0/" title="【气象降尺度】2021-基于深度学习超分辨率的气象预报系统研究-武汉大学-程建新">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">【超分辨率】SRCNN-利用深度卷积网络实现图像超分辨率</span>
+                        <span class="hidden-mobile">【气象降尺度】2021-基于深度学习超分辨率的气象预报系统研究-武汉大学-程建新</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -368,8 +463,8 @@ ResSD+(100层+)；利用了残差学习，网络收敛有提升；去除插值�
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/29/%E4%BD%BF%E7%94%A8Anaconda%E5%AE%89%E8%A3%85Pytorch/" title="Linux/Windows下使用Anaconda安装Pytorch">
-                        <span class="hidden-mobile">Linux/Windows下使用Anaconda安装Pytorch</span>
+                      <a href="/2022/10/05/%E3%80%90%E4%B8%8D%E6%83%B3%E6%8B%A5%E6%9C%89%E7%9A%84%E7%BB%8F%E9%AA%8C%E3%80%91bug%E9%9B%86%E5%90%88/" title="【不想拥有的经验】bug集合">
+                        <span class="hidden-mobile">【不想拥有的经验】bug集合</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
